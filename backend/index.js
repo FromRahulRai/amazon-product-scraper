@@ -7,7 +7,13 @@ const app = express()
 
 const PORT = process.env.PORT || 5000
 
-app.use(cors())
+// Configure CORS to allow requests from your frontend
+const corsOptions = {
+    origin: 'https://amazon-product-scraper.vercel.app', // Replace with your actual frontend URL
+    optionsSuccessStatus: 200, // Some legacy browsers choke on 204
+  };
+  
+  app.use(cors(corsOptions));
 
 app.use(express.json())
 
