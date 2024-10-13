@@ -7,10 +7,18 @@ const app = express()
 
 const PORT = process.env.PORT || 5000
 
+const allowedOrigins = [
+    "https://amazon-product-scraper.vercel.app", // Your Vercel frontend URL
+    // You can add more origins if needed
+];
+
 app.use(cors({
     origin: (origin, callback) => {
-        // Allow requests from any origin (NOT RECOMMENDED for production)
-        callback(null, true);
+        if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
     },
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: "Content-Type, Authorization",
