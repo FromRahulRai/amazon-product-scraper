@@ -8,26 +8,11 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // Dynamically allow Vercel URLs or any specific domain you want
-const allowedOrigins = [
-    'https://amazon-product-scraper.vercel.app',
-    'https://amazon-product-scraper-30pnwnqxb-rahul-rais-projects-be2ba330.vercel.app' // add the current URL
-  ];
-  
-  // CORS options
-  const corsOptions = {
-    origin: function (origin, callback) {
-      if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    methods: ['GET', 'POST'],
-    credentials: true, // Allow credentials like cookies, auth headers if needed
-  };
-  
-  // Apply CORS
-  app.use(cors(corsOptions));
+app.use(cors({
+    origin: 'https://amazon-product-scraper.vercel.app',  // Your Vercel frontend URL
+    methods: ['GET', 'POST'],  // Allowed methods
+    credentials: true,  // If you need to send cookies or auth tokens
+}));
 
 app.use(express.json())
 
