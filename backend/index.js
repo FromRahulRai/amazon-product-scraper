@@ -8,7 +8,7 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 const allowedOrigins = [
-    "https://amazon-product-scraper.vercel.app/", // Your Vercel frontend URL
+    "https://amazon-product-scraper.vercel.app", // Your Vercel frontend URL
     // "http://localhost:5173/", Localhost URL 
     // You can add more origins if needed
 ];
