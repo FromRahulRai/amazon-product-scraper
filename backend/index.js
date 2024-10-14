@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 5000
 
 const allowedOrigins = [
     "https://amazon-product-scraper.vercel.app", // Your Vercel frontend URL
-     "http://localhost:5173/",                    // Localhost URL 
     // You can add more origins if needed
 ];
 
@@ -27,8 +26,7 @@ app.use(cors({
 }));
 
 
-// For localhost 
-// app.use(cors());
+
 
 app.use(express.json())
 
